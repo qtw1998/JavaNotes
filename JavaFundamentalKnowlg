@@ -1,0 +1,899 @@
+# JAVA基础语法<h1>
+# 开发文档注释
+我们可以通过 **javadoc** 命令从文档注释中提取内容，生成程序的 API 帮助文档。
+![](media/15279274359560/15279275159519.jpg)
+    ·可以用这样的命令来生成具体某一个模块API函数的API帮助文档
+    
+    ```java
+    javadoc -d doc xxx.java
+    ```
+打开首页，查看下生成的 API 文档
+![](media/15279274359560/15279282347437.jpg)
+
+
+```java
+PS：使用文档注释时还可以使用 javadoc 标记，生成更详细的文档信息：
+
+       @author 标明开发该类模块的作者
+
+       @version 标明该类模块的版本
+
+       @see 参考转向，也就是相关主题
+
+       @param 对方法中某参数的说明
+
+       @return 对方法返回值的说明
+
+       @exception 对方法可能抛出的异常进行说明
+```
+    
+
+##比较的结果是一个布尔值（ true 或 false )
+**boolean值和C++区别  （《核心技术》P36）**
+
+```
+如果实在需要的话
+boolean a;
+a ? 1 : 0;
+```
+![](media/15279274359560/15279287775431.jpg)
+
+![Screenshot of Safari 浏览器 -2018-6-3, 9-25-40 AM--w1083](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%209-25-40%20AM-.png)
+
+##Math(《核心技术》P40)
+
+```
+import static java.lang.Math.*;//除了lang之外的都要import
+```
+## 条件运算符
+条件运算符（ ? : ）也称为 “三元运算符”
+
+```Java
+public class HelloWorld{
+    public static void main(String[] args) {
+		int score=68;
+		String mark = (score > 60) ? "及格" : "不及格";
+		System.out.println("考试成绩如何："+mark);
+	}
+}
+```
+## Java中运算符的优先级
+
+![](media/15279274359560/15279293479396.jpg)
+
+##使用String
+```Java
+String sex = "女";
+sex.equals('男')
+```
+
+```
+//子串substring
+String e = "Hello";
+String greeting = e.substring(0,3);//左闭右开，便于判断长度，b - a;
+```
+##switch
+> 1. switch 后面小括号中表达式的值必须是整型或**字符型**！！（注意是字符型）
+2. case 后面的值可以是常量数值，如 1、2；也可以是一个常量表达式，如 2+2 ；但不能是变量或带有变量的表达式，如 a * 2
+3. case 匹配后，执行匹配块里的程序代码，如果没有遇见 break 会继续执行下一个的 case 块的内容，直到遇到 break 语句或者 switch 语句块结束
+ ![](media/15279274359560/15279301252557.jpg)
+![](media/15279274359560/15279301387833.jpg)
+
+> 4.可以把功能相同的 case 语句合并起来
+![](media/15279274359560/15279301771368.jpg)
+> 5、 default 块可以出现在**==~~任意位置~~==**，也可以省略
+![](media/15279274359560/15279311627523.jpg)
+
+
+
+```java
+//为指定成绩加分，直到分数大于等于 60 为止，输出加分前和加分后的成绩，并统计加分的次数
+package com.imooc;
+**import java.util.Scanner;**
+
+public class HelloWorld {
+    public static void main(String[] args) {
+       ** Scanner input = new Scanner(System.in);**
+
+        **int score = input.nextInt();** 
+       
+    }
+}
+```
+##main --> public static void main(String args[])
+alt + /  再加回车
+
+##数组
+###新建
+ 第一种：先**声明** 
+```int[] scores;```
+        再**分配空间** 
+        ```scores = new int[5];```    
+
+第二种：声明数组的同时为它分配空间 
+``` int[] scores = new int[5]; ```        
+第三种：```int[] scores = {1,2,3};//注意[]```
+第四种：```int[] scores = new int[]{1,2,3};```![-w241](media/15279274359560/15279439928883.jpg)
+【注意】![Screenshot of Safari 浏览器 -2018-6-2, 9-01-18 PM--w725](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-2,%209-01-18%20PM-.png)
+
+###循环操作
+
+```java
+String[] hobbys = { "sports", "game", "movie" };
+		i < hobbys.length;i++)
+		
+```
+ 
+######数组下标超过范围，即数组访问越界
+![-w422](media/15279274359560/15279448488986.jpg)
+
+###**Arrays** 类操作 数组
+Arrays 类是 Java 中提供的一个工具类，在 **java.util** 包中。该类中包含了一些方法用来直接操作数组，比如可直接实现数组的排序、搜索等
+Arrays 中常用的方法：
+
+1、 排序(升序）
+
+语法：  Arrays.sort(数组名);
+![-w348](media/15279274359560/15279454050558.jpg)
+
+
+2、 将数组转换为字符串
+
+语法：  Arrays.toString(数组名);
+
+可以使用 toString( ) 方法将一个数组转换成字符串，该方法按顺序把多个数组元素连接在一起，多个元素之间使用逗号和空格隔开，如：
+![-w444](media/15279274359560/15279454822016.jpg)
+
+
+
+运行结果为：  
+
+输出数组nums中的元素：[25，7，126，53，14，86]//注意自动加框
+
+
+####数组常用操作
+输出一个数组
+
+
+```
+int[] arr = { 1, 2, 3, 4, 5 };    
+String arrString = Arrays.toString(arr);    
+     
+// 直接输出，为内存地址  
+System.out.println(arr);    
+// [I@139a55  
+     
+System.out.println(arrString );    
+// [1, 2, 3, 4, 5]  
+```
+检查一个数组是否包含某值
+
+```
+String[] arr= { "a", "b", "c", "d", "e" };    
+boolean b = Arrays.asList(arr).contains("a");    
+System.out.println(b);    
+// true  
+```
+
+连接两个数组
+方法一
+
+
+
+```
+//使用Apache Commons Lang library  
+   
+ int[] arr1 = { 1, 2, 3, 4, 5 };    
+ int[] arr2= { 6, 7, 8, 9, 10 };    
+ int[] combArr = ArrayUtils.addAll(arr1 , arr2);  
+```
+
+
+方法二
+
+
+```
+// System.arraycopy()  
+static String[] concat(String[] a, String[] b) {  
+String[] c = new String[a.length + b.length];  
+System.arraycopy(a, 0, c, 0, a.length);  
+System.arraycopy(b, 0, c, a.length, b.length);  
+return c;  
+ }  
+
+```
+方法三
+
+```
+//Arrays.copyOf()  
+  
+public static int[] concat(int[] first, int[] second) {  
+    int[] result = Arrays.copyOf(first, first.length + second.length);  
+    System.arraycopy(second, 0, result, first.length, second.length);  
+    return result;  
+}  
+```
+
+逆向输出一个数组
+方法一
+
+```
+// Apache Commons Lang library  
+  
+int[] arr= { 1, 2, 3, 4, 5 };    
+ArrayUtils.reverse(intArray);    
+System.out.println(Arrays.toString(intArray));    
+//[5, 4, 3, 2, 1]  
+```
+方法二
+
+```
+int[] arr = { 1, 2, 3, 4, 5 };  
+int[] revArr = new int[arr.length];  
+for(int i = 0; i < arr.length; i++){  
+    revArr[i] = arr[arr.length - i -1];  
+}  
+System.out.println(Arrays.toString(revArr));  
+  
+//[5, 4, 3, 2, 1]  
+```
+移除数组中的元素
+
+```
+// Apache common lang    
+   
+ int[] arr= { 1, 2, 3, 4, 5 };    
+ int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array    
+ System.out.println(Arrays.toString(removed)) 
+```
+### foreach
+![-w141](media/15279274359560/15279476863563.jpg)
+![-w279](media/15279274359560/15279477092355.jpg)
+需要了解的：在定义二维数组时也可以只指定行的个数，然后再为每一行分别指定列的个数。如果每行的列数不同，则创建的是不规则的二维数组，如下所示：
+![-w291](media/15279274359560/15279478497310.jpg)
+
+***
+![-w525](media/15279274359560/15279483462446.jpg)
+###方法
+![-w163](media/15279274359560/15279484978529.jpg)
+
+#####调用方法
+
+当需要调用方法执行某个操作时，可以先创建类的对象，然后通过  对象名.方法名();  来实现
+![-w332](media/15279274359560/15279487119573.jpg)
+
+#####方法的重载
+ **通过 (int)(Math.random() * 100) 生成 100 以内的随机数**
+ Math 类是用于进行算术操作的类，Math.random() 生成 0--1 的**浮点数**。
+
+
+-------
+对比下代码？？？
+![](media/15279274359560/15279883300353.jpg)
+
+
+```java
+import java.util.Arrays;
+
+public class HelloWorld
+{
+    public static void main(String[] args) {
+        int[] scores = {89 , -23 , 64 , 91 , 119 , 52 , 73};
+        HelloWorld hello = new HelloWorld();
+        hello.sort(scores);
+
+    }
+    public void sort(int[] scores)
+    {
+        int val_score = 0;
+        Arrays.sort(scores);
+        for(int i = scores.length - 1;i >= 0;--i)
+        {
+            if(scores[i] > 0 && scores[i] <= 100)
+            {
+                val_score++;
+            }
+        }
+
+        if(val_score >= 3)
+        {
+            for(int i = scores.length - 1;i >= scores.length - 3;--i)
+                System.out.println(scores[i]);
+        }
+        else
+        {
+            for(int i = scores.length - 1;i >= scores.length - val_score;--i)
+                System.out.println(scores[i]);
+        }
+    }
+}
+```
+
+-------
+
+> 1.**默认的成员变量的值是0；**
+> 2.**局部变量优先级更高（就近原则）**
+> 3.不存在构造方法，系统默认会构造无参的构造方法
+> 4.若存在了构造方法（自定义的），系统不会进行3了
+
+###static该类所有的对象共享同一个成员
+>1.我们可以基于一个类创建多个该类的对象，每个对象都拥有自己的成员，互相独立。然而在某些时候，我们更希望该类所有的对象共享同一个成员。此时就是 static 大显身手的时候了
+>2.Java 中被 static 修饰的成员称为静态成员或类成员。它属于整个类所有，而不是某个对象所有，即被类的所有对象所共享。静态成员可以使用类名直接访问，也可以使用对象名进行访问。当然，鉴于他作用的特殊性更推荐用类名访问~~（也可以直接访问）
+>![-w426](media/15279274359560/15279934113313.jpg)![](media/15279274359560/15279934583686.jpg)
+>3.静态成员属于整个类，当系统第一次使用该类时，就会为其分配内存空间直到该类被卸载才会进行资源回收！
+>》普通成员方法中，则可以直接访问同类的非静态变量和静态变量
+> 》静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员,如果要调用在方法中创建类的对象，通过对象来访问非静态变量。![](media/15279274359560/15279952591711.jpg)
+
+###静态初始化块
+![](media/15279274359560/15280205902835.jpg)
+·在类的声明中，**可以包含多个初始化块**，当创建类的实例时，就会**依次执行**这些代码块。
+·静态初始化块（只在类加载时执行，且只会执行一次，只能给静态变量赋值，不能初始化普通的成员变量。）
+![-w383](media/15279274359560/15280209380686.jpg)![-w176](media/15279274359560/15280209500118.jpg)
+
+```
+·程序运行时静态初始化块最先被执行，然后执行普通初始化块，最后才执行构造方法。
+·由于静态初始化块只在类加载时执行一次，所以当再次创建对象 hello2 时并未执行静态初始化块。
+（隐射上边的类加载执行的时候静态初始化块只可以加载一次）
+```
+###封装步骤
+![Screenshot of Safari 浏览器 -2018-6-3, 6-52-37 PM--w747](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%206-52-37%20PM-.png)
+
+get属性名一般为 get关键字+属性名且首字母大写
+
+![Screenshot of Safari 浏览器 -2018-6-3, 6-57-28 PM--w362](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%206-57-28%20PM-.png)
+
+###Java包
+![Screenshot of Safari 浏览器 -2018-6-3, 7-00-24 PM--w575](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-00-24%20PM-.png)![Screenshot of Safari 浏览器 -2018-6-3, 7-01-58 PM--w652](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-01-58%20PM-.png)
+
+
+![Screenshot of Safari 浏览器 -2018-6-3, 7-18-20 PM--w812](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-18-20%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-3, 7-20-28 PM--w832](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-20-28%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-3, 7-22-14 PM--w516](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-22-14%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-3, 7-22-35 PM--w781](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-22-35%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-3, 7-22-51 PM--w882](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-22-51%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-3, 7-30-04 PM--w866](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-30-04%20PM-.png)
+
+
+```java
+//为了区分属性和参数的概念
+public void setCpu(float cpu){
+    this.cpu = cpu;
+}
+```
+![Screenshot of Safari 浏览器 -2018-6-3, 7-36-02 PM--w477](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-3,%207-36-02%20PM-.png)
+![Screenshot of Eclipse -2018-6-3, 7-36-42 PM--w518](media/15279274359560/Screenshot%20of%20Eclipse%20-2018-6-3,%207-36-42%20PM-.png)
+
+###Java 中的内部类
+>1. 内部类提供了更好的封装，可以把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类
+
+>2. 内部类的方法可以直接访问**外部类的所有数据**，包括**私有的数据**
+
+>3. 内部类所实现的功能使用外部类同样可以实现，只是有时使用内部类更方便
+
+-------
+
+> 内部类可分为以下几种：
+
+> 成员内部类
+> 静态内部类
+> 方法内部类
+> 匿名内部类
+
+
+```java
+//外部类HelloWorld
+public class HelloWorld {
+    
+    // 内部类Inner，类Inner在类HelloWorld的内部
+    public class Inner {
+        
+		// 内部类的方法
+		public void show() {
+			System.out.println("welcome to imooc!");
+		}
+	}
+    
+	public static void main(String[] args) {
+        
+        // 创建外部类对象
+		HelloWorld hello = new HelloWorld();
+        // 创建内部类对象
+		Inner i = hello.new Inner();
+        // 调用内部类对象的方法
+		i.show();
+	}
+}
+```
+
+-------
+
+####成员内部类
+![-w416](media/15279274359560/15280264124165.jpg)
+
+>成员内部类的使用方法：
+
+>1、 Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个成员变量的位置，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等
+
+>2、 Inner 类中定义的 test() 方法可以**直接访问 Outer 类中的数据，而不受访问控制符的影响**，如**直接访问 Outer 类中的私有属性**a
+
+>3、 定义了成员内部类后，*必须使用外部类对象来创建内部类对象*，而**不能直接去 new 一个内部类对象**，即：内部类 对象名 = 外部类对象.new 内部类( );
+>4、 编译上面的程序后，会发现产生了两个 .class 文件
+![](media/15279274359560/15280266297706.jpg)
+其中，第二个是外部类的 .class 文件，第一个是内部类的 .class 文件，即成员内部类的 .class 文件总是这样：外部类名$内部类名.class
+
+-------
+>**[注意事项]**
+>1、外部类是不能直接使用内部类的成员和方法
+![-w323](media/15279274359560/15280267592434.jpg)
+>可先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。
+
+>2、如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。如：
+![-w410](media/15279274359560/15280268060064.jpg)
+
+```
+//记得是(内部类使用this的时候，一定要加外部类的类名)：
+Outer.this.xxx
+```
+
+-------
+
+####静态内部类//static调用类的时候已经分配内存空间
+>1、 静态内部类不能直接访问外部类的非静态成员，但可以通过 new 外部类().成员 的方式访问 
+
+>2、 如果**外部类的静态成员与内部类的成员名称相同**，可通过“类名.静态成员”*访问外部类的静态成员*；如果**外部类的静态成员与内部类的成员名称不相同**，则可通过“成员名”*直接调用外部类的静态成员*
+
+>3、 创建静态内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();
+![-w381](media/15279274359560/15280283826109.jpg)
+![Screenshot of Sublime Text -2018-6-3, 8-30-39 PM--w370](media/15279274359560/Screenshot%20of%20Sublime%20Text%20-2018-6-3,%208-30-39%20PM-.png)
+![Screenshot of Sublime Text -2018-6-3, 8-31-01 PM--w365](media/15279274359560/Screenshot%20of%20Sublime%20Text%20-2018-6-3,%208-31-01%20PM-.png)
+
+-------
+
+####方法内部类
+![](media/15279274359560/15280358882812.jpg)
+###继承
+JAVA单继承
+子类拥有父类的所有属性和方法（排除了private）
+
+```
+class Dog extends Animal{}
+```
+
+-------
+
+####方法的重写
+
+![Screenshot of Safari 浏览器 -2018-6-7, 9-39-50 PM--w884](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%209-39-50%20PM-.png)
+
+![-w656](media/15279274359560/15283795865186.jpg)
+![-w859](media/15279274359560/15283796567945.jpg)
+
+![-w780](media/15279274359560/15283797613223.jpg)
+
+```
+要么在声明的时候赋值，要么在构造函数的时候赋值
+```
+
+-------
+
+####super
+![-w663](media/15279274359560/15283800692255.jpg)
+
+```
+在子类当中调用方法的时候，1--》调用子类的时候直接调用，2--》调用父类的时候用 super.()
+```
+![-w744](media/15279274359560/15283804714840.jpg)
+
+
+![-w759](media/15279274359560/15283805133793.jpg)
+
+![Screenshot of Safari 浏览器 -2018-6-7, 10-09-18 PM--w691](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-09-18%20PM-.png)
+
+
+```
+子类当中隐式地调用父类构造方法（即没有super），但是父类当中已经有了带有参数的构造方法（这样就不会自动构造无参的构造方法）
+```
+
+-------
+
+####Object类
+![](media/15279274359560/15283814843800.jpg)
+![Screenshot of Safari 浏览器 -2018-6-7, 10-28-34 PM--w816](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-28-34%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-7, 10-28-51 PM--w617](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-28-51%20PM-.png)
+![Screenshot of Eclipse -2018-6-7, 10-29-34 PM--w398](media/15279274359560/Screenshot%20of%20Eclipse%20-2018-6-7,%2010-29-34%20PM-.png)![Screenshot of Eclipse -2018-6-7, 10-30-05 PM--w497](media/15279274359560/Screenshot%20of%20Eclipse%20-2018-6-7,%2010-30-05%20PM-.png)
+
+![Screenshot of Safari 浏览器 -2018-6-7, 10-30-35 PM--w412](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-30-35%20PM-.png)
+
+
+-------
+![Screenshot of Safari 浏览器 -2018-6-7, 10-31-52 PM--w680](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-31-52%20PM-.png)
+
+![Screenshot of Safari 浏览器 -2018-6-7, 10-33-08 PM--w1070](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-33-08%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-7, 10-37-25 PM--w448](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-37-25%20PM-.png)
+
+![-w722](media/15279274359560/15283826673226.jpg)
+
+![Screenshot of Safari 浏览器 -2018-6-7, 10-45-24 PM--w533](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-7,%2010-45-24%20PM-.png)
+
+-------
+
+###多态
+![-w708](media/15279274359560/15284191187580.jpg)
+
+![Screenshot of Safari 浏览器 -2018-6-8, 8-48-55 AM--w523](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%208-48-55%20AM-.png)
+
+![Screenshot of Safari 浏览器 -2018-6-8, 8-51-03 AM--w507](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%208-51-03%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 8-54-55 AM--w509](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%208-54-55%20AM-.png)
+
+```
+Animal obj2 = new Dog();//obj2 只是父类的引用（都是引用）
+子类独有的方法不是从父类当中继承来的-->父类的引用不能调用子类独有的方法
+```
+![-w370](media/15279274359560/15285302802316.jpg)
+
+![](media/15279274359560/15284202368975.jpg)
+![-w835](media/15279274359560/15284202586896.jpg)
+![-w406](media/15279274359560/15284203325043.jpg)
+![-w576](media/15279274359560/15284205370467.jpg)
+↓```animal instanceof Cat```的意思是-->判断animal是否可以转换成Cat类型
+![-w556](media/15279274359560/15284205986623.jpg)
+
+-------
+
+####抽象类
+![Screenshot of Safari 浏览器 -2018-6-8, 9-19-27 AM--w715](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-19-27%20AM-.png)
+
+![Screenshot of ScreenFloat -2018-6-8, 9-18-32 AM--w813](media/15279274359560/Screenshot%20of%20ScreenFloat%20-2018-6-8,%209-18-32%20AM-.png)
+
+
+```
+为了给子类的实现提供一个限制的模板，让他们知道要去实现什么样的方法（同时不知道抽象的这个父类具体怎么去实现）
+```
+
+
+```
+【注意】JAVA当中只能实现单继承的关系
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 9-20-05 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-20-05%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 9-20-51 AM--w666](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-20-51%20AM-.png)
+
+> 父类只是用来约束子类的
+![Screenshot of Safari 浏览器 -2018-6-8, 9-21-55 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-21-55%20AM-.png)
+
+>![Screenshot of Safari 浏览器 -2018-6-8, 9-23-05 AM--w429](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-23-05%20AM-.png)
+> ![Screenshot of Safari 浏览器 -2018-6-8, 9-23-18 AM--w663](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-23-18%20AM-.png)
+
+> ![-w562](media/15279274359560/15284210716626.jpg)
+
+> ```
+> 会自动实现抽象类里面的方法
+> ```
+> ![-w584](media/15279274359560/15284211676365.jpg)
+> ![Screenshot of Safari 浏览器 -2018-6-8, 9-26-41 AM--w550](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-26-41%20AM-.png)
+> ![-w577](media/15279274359560/15284212282603.jpg)
+> ![Screenshot of Safari 浏览器 -2018-6-8, 9-27-32 AM--w584](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-27-32%20AM-.png)
+
+> ![-w542](media/15279274359560/15284214203752.jpg)
+
+> ```
+> 使用一个抽象类的父类引用
+> ```
+
+-------
+###接口
+
+```
+接口就是抽象类的延伸
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 9-45-14 AM--w760](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-45-14%20AM-.png)
+
+
+
+![Screenshot of Safari 浏览器 -2018-6-8, 9-46-49 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-46-49%20AM-.png)
+
+```
+只是一种规范，用来约束类的
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 9-47-25 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-47-25%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 9-47-50 AM--w787](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-47-50%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 9-48-21 AM--w811](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-48-21%20AM-.png)
+
+```
+如果我们没有显式地写出来abstract关键字，系统会帮我们自动写出来
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 9-49-40 AM--w773](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-49-40%20AM-.png)
+
+```
+接口可以继承多个父接口，类在JAVA当中是单继承的，接口是多继承的
+```
+
+![Screenshot of Safari 浏览器 -2018-6-8, 9-50-52 AM--w550](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-50-52%20AM-.png)
+
+
+```
+加中括号，表示可以继承父接口也可以不继承【注意】是父接口
+```
+![-w702](media/15279274359560/15284228352799.jpg)
+
+![-w839](media/15279274359560/15284229213899.jpg)
+
+
+![-w856](media/15279274359560/15284230335405.jpg)
+
+>DEMO
+![Screenshot of Safari 浏览器 -2018-6-8, 9-58-12 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%209-58-12%20AM-.png)
+![-w471](media/15279274359560/15284236617846.jpg)
+
+![Screenshot of 截图 -2018-6-8, 10-04-58 AM-](media/15279274359560/Screenshot%20of%20%E6%88%AA%E5%9B%BE%20-2018-6-8,%2010-04-58%20AM-.png)
+
+```
+加上abstract关键字，其实是通常不写的
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 10-08-02 AM-](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-08-02%20AM-.png)
+
+![-w893](media/15279274359560/15284238739348.jpg)
+
+![Screenshot of Safari 浏览器 -2018-6-8, 10-12-01 AM--w465](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-12-01%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 10-12-22 AM--w337](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-12-22%20AM-.png)
+
+![-w415](media/15279274359560/15284240065987.jpg)
+![Screenshot of Safari 浏览器 -2018-6-8, 10-13-42 AM--w407](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-13-42%20AM-.png)
+
+![Screenshot of Safari 浏览器 -2018-6-8, 10-14-21 AM--w401](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-14-21%20AM-.png)
+
+
+```
+通过接口可以描述两个不同类之间的共同特征，可以使用接口的引用指向一个实现了接口的对象
+```
+![Screenshot of Safari 浏览器 -2018-6-8, 10-17-11 AM--w347](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-17-11%20AM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 10-17-40 AM--w337](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-17-40%20AM-.png)
+
+-------
+####还有另外一种使用接口的方法
+![Screenshot of Safari 浏览器 -2018-6-8, 10-19-37 AM--w692](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2010-19-37%20AM-.png)
+
+
+![Screenshot of Safari 浏览器 -2018-6-8, 12-02-49 PM--w802](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2012-02-49%20PM-.png)
+>两种方法
+>![-w485](media/15279274359560/15284307416138.jpg)
+>![Screenshot of Safari 浏览器 -2018-6-8, 12-06-54 PM--w467](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2012-06-54%20PM-.png)
+###UML
+
+![Screenshot of Safari 浏览器 -2018-6-8, 12-12-43 PM--w1016](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2012-12-43%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 12-13-30 PM--w1107](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2012-13-30%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-8, 12-14-04 PM--w673](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-8,%2012-14-04%20PM-.png)
+
+![-w1040](media/15279274359560/15284312772797.jpg)
+![-w666](media/15279274359560/15284313134636.jpg)
+![-w846](media/15279274359560/15284313416030.jpg)
+> ![-w978](media/15279274359560/15284313730358.jpg)
+
+
+![-w277](media/15279274359560/15285341063982.jpg)
+
+![-w909](media/15279274359560/15285341595147.jpg)
+![Screenshot of Google Chrome -2018-6-9, 4-50-28 PM--w807](media/15279274359560/Screenshot%20of%20Google%20Chrome%20-2018-6-9,%204-50-28%20PM-.png)
+
+![Screenshot of Google Chrome -2018-6-9, 4-51-38 PM--w929](media/15279274359560/Screenshot%20of%20Google%20Chrome%20-2018-6-9,%204-51-38%20PM-.png)
+![Screenshot of Google Chrome -2018-6-9, 4-52-09 PM--w891](media/15279274359560/Screenshot%20of%20Google%20Chrome%20-2018-6-9,%204-52-09%20PM-.png)
+![Screenshot of Google Chrome -2018-6-9, 4-53-51 PM--w936](media/15279274359560/Screenshot%20of%20Google%20Chrome%20-2018-6-9,%204-53-51%20PM-.png)
+
+![-w781](media/15279274359560/15285345559109.jpg)
+
+![Screenshot of Google Chrome -2018-6-9, 4-56-12 PM--w765](media/15279274359560/Screenshot%20of%20Google%20Chrome%20-2018-6-9,%204-56-12%20PM-.png)
+
+###异常
+![-w603](media/15279274359560/15286193675528.jpg)
+
+
+![-w939](media/15279274359560/15286193975441.jpg)
+
+![-w570](media/15279274359560/15286194392952.jpg)
+
+![-w545](media/15279274359560/15286194890627.jpg)
+![Screenshot of Safari 浏览器 -2018-6-10, 4-31-48 PM--w361](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-10,%204-31-48%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-10, 4-34-22 PM--w715](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-10,%204-34-22%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-10, 4-36-19 PM--w588](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-10,%204-36-19%20PM-.png)
+![Screenshot of Safari 浏览器 -2018-6-10, 4-36-51 PM--w103](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-10,%204-36-51%20PM-.png)
+
+```
+当程序抛出异常的时候，程序处理系统会就近寻找匹配的异常处理程序
+```
+
+![Screenshot of Safari 浏览器 -2018-6-10, 4-40-05 PM--w549](media/15279274359560/Screenshot%20of%20Safari%20%E6%B5%8F%E8%A7%88%E5%99%A8%20-2018-6-10,%204-40-05%20PM-.png)
+
+```
+finally善后处理：关掉链接，关闭打开的文件等
+```
+
+###字符串
+ >String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。
+ ![-w281](media/15279274359560/15286211342177.jpg)
+String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。
+1、 通过 String s1="爱慕课"; 声明了一个字符串对象， s1 存放了到字符串对象的引用，在内存中的存放引用关系如下图所示：
+![-w158](media/15279274359560/15286214145572.jpg)
+然后通过 s1="欢迎来到："+s1; 改变了字符串 s1 ，其实质是创建了新的字符串对象，变量 s1 指向了新创建的字符串对象，如下图所示：
+![-w160](media/15279274359560/15286214252192.jpg)
+2、 一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder（后面章节中会讲到）。
+3、 每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法（前面条件运算符章节讲过哦~~）
+![-w306](media/15279274359560/15286214777617.jpg)
+![Screenshot of Sublime Text -2018-6-10, 5-11-16 PM--w593](media/15279274359560/Screenshot%20of%20Sublime%20Text%20-2018-6-10,%205-11-16%20PM-.png)
+
+-------
+
+
+>String 类的常用方法
+>![-w778](media/15279274359560/15286219484577.jpg)
+![-w709](media/15279274359560/15286220679528.jpg)
+![-w385](media/15279274359560/15286220885094.jpg)
+
+
+```
+java里，所有的类，不管是java库里面的类，或者是你自己创建的类，全部是从object这个类继承的。object里有一个方法就是toString()，那么所有的类创建的时候，都有一个toString的方法。
+```
+
+```
+使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1
+```
+
+
+```
+public class HelloWorld {
+    public static void main(String[] args) {
+        // Java文件名
+    String fileName = "HelloWorld.java"; 
+        // 邮箱
+    String email = "laurenyang@imooc.com";
+    
+    // 判断.java文件名是否正确：合法的文件名应该以.java结尾
+        /*
+        参考步骤：
+        1、获取文件名中最后一次出现"."号的位置
+        2、根据"."号的位置，获取文件的后缀
+        3、判断"."号位置及文件后缀名
+        */
+        //获取文件名中最后一次出现"."号的位置
+    int index = fileName.indexOf('.');
+        
+        // 获取文件的后缀
+    String prefix = fileName.substring(index + 1);
+        
+    // 判断必须包含"."号，且不能出现在首位，同时后缀名为"java"
+    if (prefix.equals("java") && fileName.charAt(0) != '.' && index != -1) {
+      System.out.println("Java文件名正确");
+    } else {
+      System.out.println("Java文件名无效");
+    }
+
+        // 判断邮箱格式是否正确：合法的邮箱名中至少要包含"@", 并且"@"是在"."之前
+         /*
+        参考步骤：
+        1、获取文件名中"@"符号的位置
+        2、获取邮箱中"."号的位置
+        3、判断必须包含"@"符号，且"@"必须在"."之前
+        */
+      // 获取邮箱中"@"符号的位置
+    int index2 = email.indexOf('@');
+        
+        // 获取邮箱中"."号的位置
+    int index3 = email.indexOf('.');
+        
+    // 判断必须包含"@"符号，且"@"必须在"."之前
+    if (index2 != -1 && index3 > index2) {
+      System.out.println("邮箱格式正确");
+    } else {
+      System.out.println("邮箱格式无效");
+    }
+  }
+}
+```
+![](media/15279274359560/15286251852505.jpg)
+
+####String 类常用方法 Ⅱ
+![](media/15279274359560/15286257213680.jpg)
+![](media/15279274359560/15286257318555.jpg)
+
+```
+“==” 和 equals() 有什么区别呢？
+
+==: 判断两个字符串在内存中首地址是否相同，即判断是否是同一个字符串对象
+
+equals(): 比较存储在两个字符串对象中的内容是否一致
+```
+
+`字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。（关于编码，我们在后面课程中会详细介绍，小小期待哦~~）`
+
+####StringBuilder 类
+* 除了可以使用 String 类来存储字符串，还可以使用 StringBuilder 类或 StringBuffer 类存储字符串
+* String 类具有是不可变性
+* 程序运行时会额外创建一个对象，保存 "helloworld"。当频繁操作字符串时，就会额外产生很多临时变量。使用 StringBuilder 或 StringBuffer 就可以避免这个问题。至于 StringBuilder 和StringBuffer ，它们基本相似，不同之处，StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。
+* 因此一般情况下，如果需要创建一个内容可变的字符串对象，应优先考虑使用 StringBuilder 类。
+
+
+```
+定义 StringBuilder 类的对象
+
+```
+![](media/15279274359560/15286264871877.jpg)
+
+
+-------
+#####StringBuilder 类的常用方法
+![](media/15279274359560/15286265553268.jpg)
+例如：在下面的示例代码中，创建了 StringBuilder 对象，用来存储字符串，并对其做了追加和插入操作。这些操作**修改了 str 对象的值**，而**没有创建新的对象**，这就是 StringBuilder 和 String 最大的区别。
+![](media/15279274359560/15286265767019.jpg)
+![](media/15279274359560/15286266279706.jpg)
+![-w542](media/15279274359560/15286268298346.jpg)
+
+![](media/15279274359560/15286274811627.jpg)
+
+###包装类
+基本数据类型是不具备对象的特性的，比如基本类型不能调用方法、功能简单。为了让基本数据类型也具备对象的特性， Java 为每个基本数据类型都提供了一个包装类，这样我们就可以像操作对象那样来操作基本数据类型。
+***基本类型和包装类之间的对应关系：***
+![](media/15279274359560/15286315566264.jpg)
+
+```
+包装类主要提供了两大类方法：
+
+1. 将本类型和其他基本类型进行转换的方法
+
+2. 将字符串和本类型及包装类互相转换的方法
+```
+我们以 Integer 包装类为例，来看下包装类的特性。
+
+Integer 包装类的构造方法：
+
+![](media/15279274359560/15286316523191.jpg)
+如下代码所示：
+![](media/15279274359560/15286316703378.jpg)
+Integer包装类的常用方法：
+![](media/15279274359560/15286316801010.jpg)
+
+
+```
+public class HelloWorld {
+    public static void main(String[] args) {
+        
+    // 定义int类型变量，值为86
+    int score1 = 86; 
+        
+    // 创建Integer包装类对象，表示变量score1的值
+    Integer score2=new Integer(score1);
+        
+    // 将Integer包装类转换为double类型
+    double score3=score2.doubleValue();
+        
+    // 将Integer包装类转换为float类型
+    float score4=score2.floatValue();
+        
+    // 将Integer包装类转换为int类型
+    int score5 =score2.intValue();
+
+    System.out.println("Integer包装类：" + score2);
+    System.out.println("double类型：" + score3);
+    System.out.println("float类型：" + score4);
+    System.out.println("int类型：" + score5);
+  }
+}
+```
+####基本类型和包装类之间的转换
+基本类型和包装类之间经常需要互相转换，以 Integer 为例（其他几个包装类的操作雷同哦）：
+![](media/15279274359560/15286319629569.jpg)
+在 JDK1.5 引入自动装箱和拆箱的机制后，包装类和基本类型之间的转换就更加轻松便利了。
+
+那什么是装箱和拆箱呢？我们分别来看下
+
+装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱
+![](media/15279274359560/15286319739972.jpg)
+拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱
+
+![](media/15279274359560/15286319827169.jpg)
+![-w709](media/15279274359560/15286322866852.jpg)
+
+
+```
+int类型只能自动转换为Integer类型（如果是自动装箱的话，只能转到对应的包装类，如 int 装箱为Integer）
+```
+![](media/15279274359560/15286324117791.jpg)
+
+
